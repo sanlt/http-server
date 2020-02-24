@@ -1,0 +1,59 @@
+h1 {
+    color: deeppink;
+    font-style: italic;
+}
+
+h2 {
+    color: green;
+}
+
+#links {
+    color: blue;
+}
+
+p span {
+    font-weight: bold;
+}
+
+.important {
+    font-weight: bold;
+    color: aqua;
+}
+
+.useless {
+    font-weight: bolder;
+    color: brown;
+    font-style: italic;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+}
+
+a:hover {
+    color: deeppink;
+}
+
+a:visited {
+    color: darkgreen;
+}
+
+p::first-letter {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+p::after {
+    content: ' \00B6';
+}
+
+h1, h2, h3 {
+    font-family: monospace;
+}
+
+html{
+    background-color: #222;
+    color: #e6e6e6;
+    border-color: #e6e6e6;
+}
