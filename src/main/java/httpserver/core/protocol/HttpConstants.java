@@ -1,4 +1,4 @@
-package httpserver.core.protocal;
+package httpserver.core.protocol;
 
 /**
  * The class HttpConstants defines constants of the HTTP protocol.

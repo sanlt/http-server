@@ -1,4 +1,4 @@
-package httpserver.core.protocal;
+package httpserver.core.protocol;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static httpserver.core.protocal.HttpConstants.CONTENT_LENGTH_HEADER;
+import static httpserver.core.protocol.HttpConstants.CONTENT_LENGTH_HEADER;
 
 /**
  * The class HttpRequest is responsible for the writing of HTTP responses.

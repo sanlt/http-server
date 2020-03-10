@@ -1,13 +1,15 @@
 package httpserver.core;
 
-import httpserver.core.protocal.HttpRequest;
-import httpserver.core.protocal.HttpResponse;
-import httpserver.core.protocal.HttpStatus;
+import httpserver.core.protocol.HttpRequest;
+import httpserver.core.protocol.HttpResponse;
+import httpserver.core.protocol.HttpStatus;
+import httpserver.framework.FrontController;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 /**
@@ -28,7 +30,7 @@ public class RequestWorker implements Runnable {
             HttpRequest request = new HttpRequest(inputStream);
             HttpResponse response = new HttpResponse(outputStream);
             request.parse();
-            processRequest(request,response);
+            processRequest(request, response);
             response.send();
         } catch (IOException ex) {
             LOGGER.severe(ex.toString());
@@ -42,11 +44,22 @@ public class RequestWorker implements Runnable {
     }
 
     private void processRequest(HttpRequest request, HttpResponse response) throws IOException {
-        response.setStatus(HttpStatus.OK);
-        response.writeBody("<html><body>Hello World</body></html>");
 
-        boolean success = FileDeliverer.deliverFile(request.getPath(),response);
-        if (!success){
+        boolean success = FileDeliverer.deliverFile(request.getPath(), response);
+
+        if (!success) {
+            try {
+                success = FrontController.processRequest(request, response);
+            } catch (RuntimeException ex) {
+                LOGGER.severe(ex.toString());
+                LOGGER.severe(Arrays.toString(ex.getStackTrace()));
+                response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+                response.writeBody("<html><body>500 Internal Server Error</body></html>");
+                return;
+            }
+        }
+
+        if (!success) {
             response.setStatus(HttpStatus.NOT_FOUND);
             response.writeBody("<html><body>404 Not Found</body></html>");
         }

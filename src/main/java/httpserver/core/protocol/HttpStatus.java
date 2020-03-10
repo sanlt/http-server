@@ -1,4 +1,4 @@
-package httpserver.core.protocal;
+package httpserver.core.protocol;
 
 /**
  * The class HttpStatus defines status codes of the HTTP protocol.

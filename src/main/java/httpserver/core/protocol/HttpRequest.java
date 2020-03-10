@@ -1,4 +1,4 @@
-package httpserver.core.protocal;
+package httpserver.core.protocol;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,9 +12,9 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import static httpserver.core.protocal.HttpConstants.CONTENT_TYPE_HEADER;
-import static httpserver.core.protocal.HttpConstants.FORM_CONTENT_TYPE;
-import static httpserver.core.protocal.HttpConstants.CONTENT_LENGTH_HEADER;
+import static httpserver.core.protocol.HttpConstants.CONTENT_TYPE_HEADER;
+import static httpserver.core.protocol.HttpConstants.FORM_CONTENT_TYPE;
+import static httpserver.core.protocol.HttpConstants.CONTENT_LENGTH_HEADER;
 
 /**
  * The class HttpRequest is responsible for the parsing of HTTP requests.
